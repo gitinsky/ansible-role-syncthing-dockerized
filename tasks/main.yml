@@ -19,6 +19,9 @@
   ignore_errors: True
   register: result
 
+- name: chown syncthing volume
+  command: chown -R {{ syncthing_uid }} {{ ext_syncthing_volume }}
+
 - name: start a Syncthing container
-  command: docker run -d -p=18888:8080 -name syncthing gitinsky/synchting:0.1.0
+  command: docker run -d -p={{ ext_syncthing_gui_port }}:8080 -v {{ ext_syncthing_volume }}:/home/syncthing/Sync -name syncthing gitinsky/synchting:0.1.0
   when: result|failed
