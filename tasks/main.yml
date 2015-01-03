@@ -8,5 +8,17 @@
 - name: put syncthing.rb
   template: src=syncthing.rb dest=/root/syncthing-dockerized/syncthing.rb
 
+- name: put redir.rb
+  template: src=redir.rb dest=/root/syncthing-dockerized/redir.rb
+
 - name: build a Docker image for Syncthing
   command: docker build -t gitinsky/synchting:0.1.0 --rm /root/syncthing-dockerized
+
+- name: check if a Syncthing container is started
+  command: bash -c "docker ps | grep syncthing"
+  ignore_errors: True
+  register: result
+
+- name: start a Syncthing container
+  command: docker run -d -p=18888:8080 -name syncthing gitinsky/synchting:0.1.0
+  when: result|failed
