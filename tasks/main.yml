@@ -1,0 +1,12 @@
+---
+- name: make a build dir
+  file: state=directory name=/root/syncthing-dockerized
+
+- name: put Dockerfile
+  template: src=Dockerfile dest=/root/syncthing-dockerized/Dockerfile
+
+- name: put syncthing.rb
+  template: src=syncthing.rb dest=/root/syncthing-dockerized/syncthing.rb
+
+- name: build a Docker image for Syncthing
+  command: docker build -t gitinsky/synchting:0.1.0 --rm /root/syncthing-dockerized
