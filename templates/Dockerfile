@@ -1,6 +1,7 @@
 FROM gitinsky/baseimage:0.1.0
 MAINTAINER Git In Sky <support@gitinsky.com>
 EXPOSE 8080
+EXPOSE 22000
 
 RUN useradd -m -g users --uid {{ syncthing_uid }} syncthing && mkdir /config && chown syncthing /config && apt-get update && apt-get install redir && mkdir /home/syncthing/Sync && chown syncthing /home/syncthing/Sync
 VOLUME /home/syncthing/Sync
