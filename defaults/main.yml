@@ -1,3 +1,5 @@
 ---
 ext_syncthing_gui_port: 18888
 syncthing_uid: 22000
+syncthing_user: admin
+syncthing_password: password

@@ -6,7 +6,7 @@ Eye.application 'syncthing' do
 
   process :syncthing do
     pid_file '/var/run/syncthing-eye.pid'
-    start_command '/sbin/setuser syncthing /syncthing -home /config -gui-address="0.0.0.0:8080"'
+    start_command '/sbin/setuser syncthing /syncthing -home /config -gui-authentication="{{ syncthing_user }}:{{ syncthing_password }}" -gui-address="0.0.0.0:8080"'
 
     daemonize true
     start_timeout 10.seconds
