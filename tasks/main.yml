@@ -6,7 +6,7 @@
   template: src=Dockerfile dest=/root/syncthing-dockerized/Dockerfile
 
 - name: build a Docker image for Syncthing
-  command: docker build -t gitinsky/syncthing:0.2.0 --rm /root/syncthing-dockerized
+  command: docker build -t gitinsky/syncthing:0.2.1 --rm /root/syncthing-dockerized
 
 - name: tag it as latest
   command: docker build -t gitinsky/syncthing:latest --rm /root/syncthing-dockerized
